@@ -1,19 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
-		extend: {
-			colors: {
-				primary: '#0F172A',
-				secondary: '#3B82F6',
-				accent: '#10B981',
-				background: '#F8FAFC',
-				text: '#334155'
-			},
-			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-			}
-		},
-	},
-	plugins: [],
-}
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        brand: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+        },
+        accent: {
+          400: '#34d399',
+          500: '#10b981',
+          600: '#059669',
+        }
+      }
+    },
+  },
+  plugins: [],
+};

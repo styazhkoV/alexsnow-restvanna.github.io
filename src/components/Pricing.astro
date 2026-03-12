@@ -1,0 +1,86 @@
+---
+// Pricing Section — price cards
+const plans = [
+  { size: '1,2 м', price: '29 000', popular: false },
+  { size: '1,5 м', price: '32 000', popular: true },
+  { size: '1,7 м', price: '34 000', popular: false },
+];
+---
+
+<section id="pricing" class="relative py-20 sm:py-28 overflow-hidden">
+  <!-- Background -->
+  <div class="absolute inset-0 bg-slate-900"></div>
+  <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-500/50 to-transparent"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6">
+    <!-- Header -->
+    <div class="text-center mb-14">
+      <p class="text-sky-400 font-semibold text-sm uppercase tracking-wider mb-3">Прозрачные цены</p>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">
+        Акрил Fintex <span class="bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">Мрамор</span>
+      </h2>
+      <p class="text-slate-400 max-w-xl mx-auto">
+        +10 лет к сроку службы покрытия. Цена рассчитывается исходя из количества акрила на размер ванны.
+      </p>
+    </div>
+
+    <!-- Price cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+      {plans.map((plan) => (
+        <div class={`relative rounded-2xl p-6 sm:p-8 border transition-all duration-300 hover:scale-[1.03] hover:shadow-xl ${
+          plan.popular
+            ? 'bg-gradient-to-b from-sky-500/10 to-emerald-500/5 border-sky-500/30 shadow-lg shadow-sky-500/10'
+            : 'bg-slate-800/50 border-slate-700/50 hover:border-slate-600'
+        }`}>
+          {plan.popular && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="px-4 py-1 bg-gradient-to-r from-sky-500 to-emerald-500 text-white text-xs font-bold rounded-full uppercase tracking-wider">
+                Популярный
+              </span>
+            </div>
+          )}
+          <div class="text-center">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-sky-500/10 mb-4">
+              <svg class="w-7 h-7 text-sky-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+              </svg>
+            </div>
+            <p class="text-slate-400 text-sm mb-1">Ванна</p>
+            <p class="text-3xl font-bold text-white mb-4">{plan.size}</p>
+            <div class="flex items-baseline justify-center gap-1 mb-6">
+              <span class="text-4xl font-extrabold bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
+                {plan.price}
+              </span>
+              <span class="text-slate-400 text-sm">тенге</span>
+            </div>
+            <a
+              href="https://wa.me/77055606066"
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`block w-full py-3 rounded-xl font-semibold transition-all duration-300 ${
+                plan.popular
+                  ? 'bg-green-500 text-white hover:bg-green-400 shadow-lg shadow-green-500/25'
+                  : 'bg-slate-700 text-slate-200 hover:bg-slate-600'
+              }`}
+            >
+              Заказать
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Notice -->
+    <div class="max-w-2xl mx-auto">
+      <div class="flex items-start gap-3 p-4 sm:p-5 rounded-xl bg-amber-500/5 border border-amber-500/20">
+        <svg class="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M8.485 2.495c.673-1.167 2.357-1.167 3.03 0l6.28 10.875c.673 1.167-.17 2.625-1.516 2.625H3.72c-1.347 0-2.189-1.458-1.515-2.625L8.485 2.495zM10 5a.75.75 0 01.75.75v3.5a.75.75 0 01-1.5 0v-3.5A.75.75 0 0110 5zm0 9a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+        </svg>
+        <p class="text-sm text-slate-300">
+          <strong class="text-amber-400">Важно:</strong> если ванна реставрировалась ранее, к стоимости добавляется
+          <strong class="text-white">+10 000 тенге</strong> за снятие старого покрытия.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
