@@ -1,8 +1,6 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-
+// astro.config.mjs
 export default defineConfig({
   site: 'https://styazhkov.github.io',
-  base: '/alexsnow-restvanna.github.io', // <--- Обязательно так!
+  base: '/alexsnow-restvanna.github.io', // <--- Добавь название репо
   integrations: [tailwind()],
 });
