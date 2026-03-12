@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-// https://astro.build/config
 export default defineConfig({
-  site: 'https://styazhkov.github.io', // Замените на ваш URL GitHub Pages
-  base: '/', // Замените на имя вашего репозитория (если деплой не в корень)
+  site: 'https://styazhkov.github.io',
+  // Указываем путь к репозиторию, чтобы ссылки на стили стали корректными
+  base: '/alexsnow-restvanna.github.io',
   integrations: [tailwind()],
 });
