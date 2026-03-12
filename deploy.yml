@@ -1,0 +1,58 @@
+name: Deploy Astro site to GitHub Pages
+
+on:
+  # Запускать деплой при каждом пуше в ветку main (если у тебя ветка master, поменяй название)
+  push:
+    branches: [ main ]
+  # Позволяет запускать этот процесс вручную из вкладки Actions на GitHub
+  workflow_dispatch:
+
+# Настройка прав доступа для GitHub Token, чтобы он мог публиковать сайт
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Отменяем предыдущие сборки, если они еще идут, а ты уже запушил новый код
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Этап 1: Сборка проекта
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install # Если используешь yarn или pnpm, замени на yarn install или pnpm install
+
+      - name: Build Astro project
+        run: npm run build
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # Папка, куда Astro собирает готовый сайт
+
+  # Этап 2: Публикация на GitHub Pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
