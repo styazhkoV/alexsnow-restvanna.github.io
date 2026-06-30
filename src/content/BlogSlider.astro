@@ -1,0 +1,54 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+
+// Определяем тип для постов
+type BlogPost = CollectionEntry<"blog">;
+
+// Получаем коллекцию статей
+const posts: BlogPost[] = await getCollection("blog");
+
+// Перемешиваем статьи случайным образом
+const shuffledPosts = posts.sort(() => Math.random() - 0.5);
+---
+
+<section id="blog" class="py-20 bg-slate-950">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14">
+      <p class="text-emerald-400 font-semibold text-sm uppercase tracking-wider mb-3">Блог</p>
+      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Полезные статьи о реставрации ванн</h2>
+    </div>
+
+    <div class="slider-container">
+      {shuffledPosts.map((post: BlogPost) => (
+        <article class="slide">
+          <a href={`/blog/${post.slug}/`}>
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .slider-container {
+    display: flex;
+    gap: 1rem;
+    animation: scroll 40s linear infinite;
+  }
+  .slide {
+    flex: 0 0 300px;
+    background: #1e293b;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: transform 0.3s;
+  }
+  .slide:hover {
+    transform: scale(1.05);
+  }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
