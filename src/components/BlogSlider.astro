@@ -2,7 +2,6 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
 type BlogPost = CollectionEntry<"blog">;
-
 const posts: BlogPost[] = await getCollection("blog");
 const shuffledPosts = posts.sort(() => Math.random() - 0.5);
 ---

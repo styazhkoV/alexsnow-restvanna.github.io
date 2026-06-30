@@ -1,0 +1,61 @@
+
+    Directory: C:\Users\alexs\alexsnow-restvanna.github.io\alexsnow-restvanna.github.io\src
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          30.06.2026    23:02                components
+d----          30.06.2026    23:01                content
+d----          27.06.2026    19:31                layouts
+d----          30.06.2026    22:58                pages
+d----          30.06.2026    20:44                styles
+-a---          30.06.2026    23:14            349 content.config.ts
+-a---          27.06.2026    19:31             87 env.d.ts
+
+    Directory: C:\Users\alexs\alexsnow-restvanna.github.io\alexsnow-restvanna.github.io\src\components
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          30.06.2026    20:28                works
+-a---          30.06.2026    22:58           1155 BlogSlider.astro
+-a---          30.06.2026    22:59           5864 ContactForm.astro
+-a---          27.06.2026    19:31           6155 Hero.astro
+-a---          27.06.2026    20:01           4733 Pricing.astro
+
+    Directory: C:\Users\alexs\alexsnow-restvanna.github.io\alexsnow-restvanna.github.io\src\components\works
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          30.06.2026    20:31           1568 Portfolio.astro
+
+    Directory: C:\Users\alexs\alexsnow-restvanna.github.io\alexsnow-restvanna.github.io\src\content
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----          30.06.2026    22:52                blog
+-a---          30.06.2026    22:59           1561 BlogSlider.astro
+
+    Directory: C:\Users\alexs\alexsnow-restvanna.github.io\alexsnow-restvanna.github.io\src\content\blog
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          30.06.2026    23:16            511 post-1.md
+
+    Directory: C:\Users\alexs\alexsnow-restvanna.github.io\alexsnow-restvanna.github.io\src\layouts
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          30.06.2026    20:56           3487 Layout.astro
+
+    Directory: C:\Users\alexs\alexsnow-restvanna.github.io\alexsnow-restvanna.github.io\src\pages
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          30.06.2026    22:58            717 blog.astro
+-a---          30.06.2026    22:59            618 index.astro
+
+    Directory: C:\Users\alexs\alexsnow-restvanna.github.io\alexsnow-restvanna.github.io\src\styles
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          30.06.2026    20:44             62 global.css
+

@@ -1,0 +1,26 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+const { slug } = Astro.params;
+const post = posts.find((p: any) => p.slug === slug);
+
+if (!post) {
+  throw new Error(`Статья с slug "${slug}" не найдена`);
+}
+---
+
+<Layout title={post.data.title}>
+  <article class="prose mx-auto py-8">
+    <h1>{post.data.title}</h1>
+    <p class="text-gray-500">
+      {post.data.pubDate.toLocaleDateString("ru-RU")}
+    </p>
+    <p class="text-lg mb-4">{post.data.description}</p>
+    <div set:html={post.body} />
+    <a href="/blog" class="block mt-6 text-blue-600 hover:underline">
+      ← Назад к блогу
+    </a>
+  </article>
+</Layout>

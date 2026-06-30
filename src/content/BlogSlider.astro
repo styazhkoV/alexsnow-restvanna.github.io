@@ -1,54 +1,41 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 
-// Определяем тип для постов
-type BlogPost = CollectionEntry<"blog">;
-
-// Получаем коллекцию статей
-const posts: BlogPost[] = await getCollection("blog");
-
-// Перемешиваем статьи случайным образом
-const shuffledPosts = posts.sort(() => Math.random() - 0.5);
+const posts = await getCollection("blog");
 ---
 
-<section id="blog" class="py-20 bg-slate-950">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="text-center mb-14">
-      <p class="text-emerald-400 font-semibold text-sm uppercase tracking-wider mb-3">Блог</p>
-      <h2 class="text-3xl sm:text-4xl font-bold mb-4">Полезные статьи о реставрации ванн</h2>
-    </div>
-
-    <div class="slider-container">
-      {shuffledPosts.map((post: BlogPost) => (
-        <article class="slide">
-          <a href={`/blog/${post.slug}/`}>
-            <h3>{post.data.title}</h3>
-            <p>{post.data.description}</p>
-          </a>
-        </article>
-      ))}
-    </div>
+<section class="blog">
+  <h2>Блог</h2>
+  <div class="blog-list">
+    {posts.map((post) => (
+      <article class="blog-item">
+        <h3>{post.data.title}</h3>
+        <p>{post.data.description}</p>
+        <small>{post.data.pubDate.toLocaleDateString("ru-RU")}</small>
+      </article>
+    ))}
   </div>
 </section>
 
 <style>
-  .slider-container {
+  .blog {
+    padding: 2rem;
+    color: #fff;
+  }
+  .blog-list {
     display: flex;
-    gap: 1rem;
-    animation: scroll 40s linear infinite;
+    flex-direction: column;
+    gap: 1.5rem;
   }
-  .slide {
-    flex: 0 0 300px;
-    background: #1e293b;
-    border-radius: 12px;
+  .blog-item {
+    background: rgba(255, 255, 255, 0.05);
     padding: 1rem;
-    transition: transform 0.3s;
+    border-radius: 8px;
   }
-  .slide:hover {
-    transform: scale(1.05);
+  .blog-item h3 {
+    margin: 0 0 0.5rem;
   }
-  @keyframes scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+  .blog-item small {
+    color: #aaa;
   }
 </style>

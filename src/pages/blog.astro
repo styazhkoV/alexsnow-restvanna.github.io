@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogSlider from "../components/BlogSlider.astro";
+import { getCollection } from 'astro:content';
+
+type BlogEntry = Awaited<ReturnType<typeof getCollection<"blog">>>[number] & { slug: string };
+const posts: BlogEntry[] = await getCollection('blog');
+---
+
+<Layout title="Блог о реставрации ванн">
+  <BlogSlider />
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold mb-6">Полезные советы</h1>
+    <ul class="space-y-4">
+      {posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.slug}`} class="text-blue-600 hover:underline">
+            {post.data.title}
+          </a>
+          <p class="text-sm text-gray-500">{post.data.description}</p>
+        </li>
+      ))}
+    </ul>
+  </main>
+</Layout>
